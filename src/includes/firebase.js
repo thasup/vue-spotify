@@ -2,6 +2,8 @@
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
+import 'firebase/firestore';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,4 +20,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export default firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+firebase.analytics(app);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const usersCollection = db.collection('users');
+
+export {
+  auth,
+  db,
+  usersCollection,
+};
