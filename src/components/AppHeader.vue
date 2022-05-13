@@ -20,6 +20,12 @@
             <li>
             <a class="px-2 text-white" href="#" @click.prevent="signout">Logout</a>
           </li>
+            <li>
+            <router-link to="/">Go to Home</router-link>
+          </li>
+            <li>
+            <router-link to="/about">Go to About</router-link>
+          </li>
           </template>
         </ul>
       </div>
