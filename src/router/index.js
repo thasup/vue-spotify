@@ -11,6 +11,10 @@ const routes = [
     // alias: '/manage',
     path: '/manage-music',
     component: Manage,
+    beforeEnter: (to, from, next) => {
+      console.log('ggg');
+      next();
+    },
   },
   { path: '/manage', redirect: { name: 'manage' } },
   { path: '/:catchAll(.*)*', redirect: { name: 'home' } },
@@ -20,6 +24,11 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-600',
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('kllkkk');
+  next();
 });
 
 export default router;

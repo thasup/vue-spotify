@@ -134,3 +134,18 @@
     </div>
   </section>
 </template>
+
+<script>
+import store from '@/store/index';
+
+export default {
+  name: 'ManageVue',
+  beforeRouteEnter(to, from, next) {
+    if (store.state.userLoggedIn) {
+      next();
+    } else {
+      next({ name: 'home' });
+    }
+  },
+};
+</script>
