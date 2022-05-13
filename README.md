@@ -1,5 +1,7 @@
 # vue-spotify
 
+Working in process...
+
 ## Project setup
 ```
 npm install
