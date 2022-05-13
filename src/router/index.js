@@ -4,14 +4,22 @@ import About from '@/views/AboutVue.vue';
 import Manage from '@/views/ManageVue.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About },
-  { path: '/manage', component: Manage },
+  { name: 'home', path: '/', component: Home },
+  { name: 'about', path: '/about', component: About },
+  {
+    name: 'manage',
+    // alias: '/manage',
+    path: '/manage-music',
+    component: Manage,
+  },
+  { path: '/manage', redirect: { name: 'manage' } },
+  { path: '/:catchAll(.*)*', redirect: { name: 'home' } },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  linkExactActiveClass: 'text-yellow-600',
 });
 
 export default router;
