@@ -16,7 +16,6 @@ const routes = [
     },
     component: Manage,
     beforeEnter: (to, from, next) => {
-      console.log('ggg');
       if (!to.matched.some((record) => record.meta.requiresAuth)) {
         next();
         return;
@@ -40,7 +39,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('kllkkk');
   next();
 });
 
