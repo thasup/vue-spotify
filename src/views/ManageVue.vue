@@ -3,7 +3,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <upload-file ref="upload"></upload-file>
+        <upload-file ref="upload" :add-song="addSong"></upload-file>
       </div>
       <div class="col-span-2">
         <div class="bg-white rounded border border-gray-200 relative flex flex-col">
@@ -14,8 +14,8 @@
           <div class="p-6">
             <!-- Composition Items -->
             <composition-item v-for="(song, index) in songs"
-              :key="song.docId" :song="song" :updateSong="updateSong"
-              :index="index" :removeSong="removeSong">
+              :key="song.docId" :song="song" :update-song="updateSong"
+              :index="index" :remove-song="removeSong" :update-unsaved-flag="updateUnsavedFlag">
             </composition-item>
           </div>
         </div>
@@ -36,19 +36,13 @@ export default {
   data() {
     return {
       songs: [],
+      unsavedFlag: false,
     };
   },
   async created() {
     const snapshot = await songsCollection.where('uid', '==', auth.currentUser.uid).get();
 
-    snapshot.forEach((document) => {
-      const song = {
-        ...document.data(),
-        docId: document.id,
-      };
-
-      this.songs.push(song);
-    });
+    snapshot.forEach(this.addSong);
   },
   beforeRouteEnter(to, from, next) {
     if (store.state.userLoggedIn) {
@@ -58,8 +52,15 @@ export default {
     }
   },
   beforeRouteLeave(to, from, next) {
-    this.$refs.upload.cancelUploads();
-    next();
+    if (!this.unsavedFlag) {
+      this.$refs.upload.cancelUploads();
+      next();
+    } else {
+      // eslint-disable-next-line no-alert, no-restricted-globals
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
+      this.$refs.upload.cancelUploads();
+      next(leave);
+    }
   },
   methods: {
     updateSong(index, values) {
@@ -68,6 +69,17 @@ export default {
     },
     removeSong(index) {
       this.songs.splice(index, 1);
+    },
+    addSong(document) {
+      const song = {
+        ...document.data(),
+        docId: document.id,
+      };
+
+      this.songs.push(song);
+    },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value;
     },
   },
 };
