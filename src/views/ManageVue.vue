@@ -13,7 +13,9 @@
           </div>
           <div class="p-6">
             <!-- Composition Items -->
-            <composition-item v-for="song in songs" :key="song.docId"></composition-item>
+            <composition-item v-for="(song, index) in songs"
+              :key="song.docId" :song="song" :updateSong="updateSong" :index="index">
+            </composition-item>
           </div>
         </div>
       </div>
@@ -57,6 +59,12 @@ export default {
   beforeRouteLeave(to, from, next) {
     this.$refs.upload.cancelUploads();
     next();
+  },
+  methods: {
+    updateSong(index, values) {
+      this.songs[index].modified_name = values.modified_name;
+      this.songs[index].genre = values.genre;
+    },
   },
 };
 </script>
