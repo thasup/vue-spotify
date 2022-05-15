@@ -3,7 +3,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <upload-file></upload-file>
+        <upload-file ref="upload"></upload-file>
       </div>
       <div class="col-span-2">
         <div class="bg-white rounded border border-gray-200 relative flex flex-col">
@@ -42,7 +42,7 @@
                   <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600">
                     Submit
                   </button>
-                  <button type="button" class="py-1.5 px-3 rounded text-white bg-gray-600">
+                  <button type="button" class="ml-2 py-1.5 px-3 rounded text-white bg-gray-600">
                     Go Back
                   </button>
                 </form>
@@ -112,6 +112,10 @@ export default {
     } else {
       next({ name: 'home' });
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$refs.upload.cancelUploads();
+    next();
   },
 };
 </script>
