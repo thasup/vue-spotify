@@ -42,7 +42,7 @@ import { songsCollection } from '@/includes/firebase';
 import SongItem from '@/components/SongItem.vue';
 
 export default {
-  name: 'HomeVue',
+  name: 'HomeView',
   components: {
     SongItem,
   },
