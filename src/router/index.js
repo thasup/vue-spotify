@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '@/views/HomeVue.vue';
-import About from '@/views/AboutVue.vue';
-import Manage from '@/views/ManageVue.vue';
+import SongView from '@/views/SongView.vue';
 import store from '@/store';
+import HomeView from '@/views/HomeView.vue';
+import AboutView from '@/views/AboutView.vue';
+import ManageView from '@/views/ManageView.vue';
 
 const routes = [
-  { name: 'home', path: '/', component: Home },
-  { name: 'about', path: '/about', component: About },
+  { name: 'home', path: '/', component: HomeView },
+  { name: 'about', path: '/about', component: AboutView },
   {
     name: 'manage',
     // alias: '/manage',
@@ -14,7 +15,7 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-    component: Manage,
+    component: ManageView,
     beforeEnter: (to, from, next) => {
       if (!to.matched.some((record) => record.meta.requiresAuth)) {
         next();
@@ -29,6 +30,7 @@ const routes = [
     },
   },
   { path: '/manage', redirect: { name: 'manage' } },
+  { name: 'song', path: '/song/:id', component: SongView },
   { path: '/:catchAll(.*)*', redirect: { name: 'home' } },
 ];
 

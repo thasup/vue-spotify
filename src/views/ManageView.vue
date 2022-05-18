@@ -31,7 +31,7 @@ import CompositionItem from '@/components/CompositionItem.vue';
 import { songsCollection, auth } from '@/includes/firebase';
 
 export default {
-  name: 'ManageVue',
+  name: 'ManageView',
   components: { UploadFile, CompositionItem },
   data() {
     return {
