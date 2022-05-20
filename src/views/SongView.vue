@@ -110,6 +110,10 @@ export default {
       return;
     }
 
+    const { sort } = this.$route.query;
+
+    this.sort = sort === 'latest' || sort === 'oldest' ? sort : 'latest';
+
     this.song = docSnapshot.data();
     this.getComments();
   },
@@ -148,6 +152,19 @@ export default {
           docId: doc.id,
           ...doc.data(),
         });
+      });
+    },
+  },
+  watch: {
+    sort(newVal) {
+      if (newVal === this.$route.query.sort) {
+        return;
+      }
+
+      this.$router.push({
+        query: {
+          sort: newVal,
+        },
       });
     },
   },
