@@ -68,12 +68,12 @@ export default createStore({
 
       commit('toggleAuth');
     },
-    async playNewSong({ commit, state }, payload) {
+    playNewSong({ commit, state }, payload) {
       commit('newSong', payload);
 
       state.sound.play();
     },
-    async toggleAudio({ state }) {
+    toggleAudio({ state }) {
       if (!state.sound.playing) {
         return;
       }

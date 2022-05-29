@@ -5,7 +5,7 @@
       <!-- Play/Pause Button -->
       <div class="float-left w-7 h-7 leading-3">
         <button type="button" @click.prevent="toggleAudio">
-          <i class="fa fa-play text-gray-500 text-xl"
+          <i class="fa text-gray-500 text-xl"
             :class="{ 'fa-play': !getPlaying, 'fa-pause': getPlaying }"></i>
         </button>
       </div>
