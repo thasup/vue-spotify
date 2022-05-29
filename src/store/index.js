@@ -8,6 +8,8 @@ export default createStore({
     userLoggedIn: false,
     currentSong: {},
     sound: {},
+    seek: '00:00',
+    duration: '00:00',
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -22,6 +24,10 @@ export default createStore({
         src: [payload.url],
         html5: true,
       });
+    },
+    updatePosition(state) {
+      state.seek = state.sound.seek();
+      state.duration = state.sound.duration();
     },
   },
   getters: {
@@ -68,10 +74,16 @@ export default createStore({
 
       commit('toggleAuth');
     },
-    playNewSong({ commit, state }, payload) {
+    playNewSong({ commit, state, dispatch }, payload) {
       commit('newSong', payload);
 
       state.sound.play();
+
+      state.sound.on('play', () => {
+        requestAnimationFrame(() => {
+          dispatch('progress');
+        });
+      });
     },
     toggleAudio({ state }) {
       if (!state.sound.playing) {
@@ -82,6 +94,15 @@ export default createStore({
         state.sound.pause();
       } else {
         state.sound.play();
+      }
+    },
+    progress({ commit, state, dispatch }) {
+      commit('updatePosition');
+
+      if (state.sound.playing()) {
+        requestAnimationFrame(() => {
+          dispatch('progress');
+        });
       }
     },
   },
