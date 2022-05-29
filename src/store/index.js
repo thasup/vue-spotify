@@ -78,6 +78,10 @@ export default createStore({
       commit('toggleAuth');
     },
     playNewSong({ commit, state, dispatch }, payload) {
+      if (state.sound instanceof Howl) {
+        state.sound.unload();
+      }
+
       commit('newSong', payload);
 
       state.sound.play();
