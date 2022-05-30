@@ -21,7 +21,9 @@
           <span class="song-artist">(Uploaded by {{ currentSong.display_name }})</span>
         </div>
         <!-- Scrub Container  -->
-        <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer">
+        <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events  -->
+        <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
+          @click.prevent="updateSeek" >
           <!-- Player Ball -->
           <span class="absolute top-neg-8 text-gray-800 text-lg"
             :style="{ left: playerProgress}" >
@@ -50,7 +52,7 @@ export default {
     ...mapState(['seek', 'duration', 'playerProgress', 'currentSong']),
   },
   methods: {
-    ...mapActions(['toggleAudio']),
+    ...mapActions(['toggleAudio', 'updateSeek']),
   },
 };
 </script>

@@ -112,5 +112,23 @@ export default createStore({
         });
       }
     },
+    updateSeek({ state, dispatch }, payload) {
+      if (state.sound.playing) {
+        return;
+      }
+
+      const { x, width } = payload.currentTarget.getBoundingClientRect();
+
+      console.log({ x, width });
+      // Document =2000, Timeline = 1000, ClickX = 500, Distance = 500
+      const clickX = payload.clickX - x;
+      const precentage = clickX / width;
+      const seconds = state.sound.duration() * precentage;
+
+      state.sound.seek(seconds);
+      state.sound.once('seek', () => {
+        dispatch('progress');
+      });
+    },
   },
 });
