@@ -7,8 +7,9 @@
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
       <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
-        focus:outline-none" @click.prevent="playNewSong(song)">
-        <i class="fas fa-play"></i>
+        focus:outline-none"
+        @click.prevent="playNewSong(song)">
+        <i class="fas" :class="{ 'fa-play': !getPlaying, 'fa-pause': getPlaying }"></i>
       </button>
       <div class="z-50 text-left ml-8">
         <!-- Song Info -->
@@ -71,7 +72,7 @@
 
 <script>
 import { songsCollection, commentsCollection, auth } from '@/includes/firebase';
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'SongView',
@@ -91,6 +92,7 @@ export default {
   },
   computed: {
     ...mapState(['userLoggedIn']),
+    ...mapGetters(['getPlaying']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
         if (this.sort === 'latest') {
