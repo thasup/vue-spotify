@@ -23,6 +23,9 @@
 
     <div class="test-box">
       <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleDetect">Detect</button>
+
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
       <button class="test-link" @click="handleOriginal">Original</button>
 
       <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
@@ -115,7 +118,7 @@ export default {
       this.pendingRequest = false;
     },
 
-    handleOriginal() {
+    handleDetect() {
       const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656275929.pdf';
 
       console.log(navigator.userAgent);
@@ -132,6 +135,18 @@ export default {
           console.log('ELSE!!!');
           win = window.open(link, '_blank');
         }
+
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
+      }
+    },
+
+    handleOriginal() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656275929.pdf';
+
+      if (link) {
+        const win = window.open(link, '_blank');
 
         if (win) { // Prevent Browser error
           win.focus();
@@ -200,6 +215,7 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .test-link {
