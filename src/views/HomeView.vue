@@ -102,10 +102,9 @@ export default {
     },
 
     handleLink() {
-      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656261496.pdf';
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/production/products/sku_spec_sheet_1656263279.pdf';
       if (link) {
         // Open new tab and focus that tab
-        // const win = window.open(link, "_blank", "popup");
         const win = window.open();
         win.location.href = link;
 
