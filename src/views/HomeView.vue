@@ -22,7 +22,13 @@
     </section>
 
     <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+    <div @click="handleOriginal">Original</div>
+
+    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
     <div @click="handleLink">TEST</div>
+
+    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+    <div @click="handleLink2">TEST2</div>
 
     <!-- Main Content -->
     <section class="container mx-auto">
@@ -101,11 +107,38 @@ export default {
       this.pendingRequest = false;
     },
 
+    handleOriginal() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656275929.pdf';
+      if (link) {
+        // Open new tab and focus that tab
+        const win = window.open(link, '_blank');
+
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
+      }
+    },
+
     handleLink() {
       const link = 'https://storage.googleapis.com/chanintr-media-staging/production/products/sku_spec_sheet_1656263279.pdf';
       if (link) {
         // Open new tab and focus that tab
         const win = window.open();
+        console.log(win);
+        win.location.href = link;
+
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
+      }
+    },
+
+    handleLink2() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/production/products/sku_spec_sheet_1656275531.pdf';
+      if (link) {
+        // Open new tab and focus that tab
+        const win = window.open('about:blank', '_blank');
+        console.log(win);
         win.location.href = link;
 
         if (win) { // Prevent Browser error
