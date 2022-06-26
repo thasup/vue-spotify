@@ -21,14 +21,19 @@
         src="assets/img/introduction-music.png" alt="intro picture" />
     </section>
 
-    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
-    <div @click="handleOriginal">Original</div>
+    <div class="test-box">
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleOriginal">Original</button>
 
-    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
-    <div @click="handleLink">TEST</div>
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleLink">OPEN</button>
 
-    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
-    <div @click="handleLink2">TEST2</div>
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleLink2">BLANK</button>
+
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleLink3">NON-FOCUS</button>
+    </div>
 
     <!-- Main Content -->
     <section class="container mx-auto">
@@ -127,9 +132,9 @@ export default {
         console.log(win);
         win.location.href = link;
 
-        if (win) { // Prevent Browser error
-          win.focus();
-        }
+        // if (win) { // Prevent Browser error
+        //   win.focus();
+        // }
       }
     },
 
@@ -146,6 +151,33 @@ export default {
         }
       }
     },
+
+    handleLink3() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656277318.pdf';
+      if (link) {
+        // Open new tab and focus that tab
+        const win = window.open();
+        console.log(win);
+        win.location.href = link;
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+.test-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.test-link {
+  padding: 5px 15px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+</style>
