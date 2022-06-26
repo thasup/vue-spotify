@@ -33,6 +33,9 @@
 
       <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
       <button class="test-link" @click="handleLink3">NON-FOCUS</button>
+
+      <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+      <button class="test-link" @click="handleLink4">location</button>
     </div>
 
     <!-- Main Content -->
@@ -114,9 +117,21 @@ export default {
 
     handleOriginal() {
       const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656275929.pdf';
+
+      console.log(navigator.userAgent);
       if (link) {
-        // Open new tab and focus that tab
-        const win = window.open(link, '_blank');
+        let win;
+        if (navigator.userAgent.indexOf('Chrome') !== -1) {
+          console.log('Google Chrome');
+          win = window.open(link, '_blank');
+        } else if (navigator.userAgent.indexOf('Safari') !== -1) {
+          console.log('Safari');
+          win = window.open();
+          win.location.href = link;
+        } else {
+          console.log('ELSE!!!');
+          win = window.open(link, '_blank');
+        }
 
         if (win) { // Prevent Browser error
           win.focus();
@@ -132,9 +147,9 @@ export default {
         console.log(win);
         win.location.href = link;
 
-        // if (win) { // Prevent Browser error
-        //   win.focus();
-        // }
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
       }
     },
 
@@ -159,6 +174,20 @@ export default {
         const win = window.open();
         console.log(win);
         win.location.href = link;
+      }
+    },
+
+    handleLink4() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656278681.pdf';
+      if (link) {
+        // Open new tab and focus that tab
+        const win = window.open(link, '_blank');
+        // eslint-disable-next-line no-unused-expressions
+        win.location;
+
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
       }
     },
   },
