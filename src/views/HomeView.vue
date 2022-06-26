@@ -21,6 +21,9 @@
         src="assets/img/introduction-music.png" alt="intro picture" />
     </section>
 
+    <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
+    <div @click="handleLink">TEST</div>
+
     <!-- Main Content -->
     <section class="container mx-auto">
       <div class="bg-white rounded border border-gray-200 relative flex flex-col">
@@ -96,6 +99,20 @@ export default {
       });
 
       this.pendingRequest = false;
+    },
+
+    handleLink() {
+      const link = 'https://storage.googleapis.com/chanintr-media-staging/dev/products/sku_spec_sheet_1656261496.pdf';
+      if (link) {
+        // Open new tab and focus that tab
+        // const win = window.open(link, "_blank", "popup");
+        const win = window.open();
+        win.location.href = link;
+
+        if (win) { // Prevent Browser error
+          win.focus();
+        }
+      }
     },
   },
 };
