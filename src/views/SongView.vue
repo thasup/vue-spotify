@@ -9,7 +9,7 @@
         <!-- Play/Pause Button -->
         <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
           focus:outline-none"
-          @click.prevent="playNewSong(song)">
+          @click.prevent="!currentSong.modified_name ? playNewSong(song) : toggleAudio()">
           <i class="fas" :class="{ 'fa-play': !getPlaying, 'fa-pause': getPlaying }"></i>
         </button>
         <div class="z-50 text-left ml-8">
@@ -96,7 +96,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    ...mapState(['userLoggedIn', 'currentSong']),
     ...mapGetters(['getPlaying']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
@@ -125,7 +125,7 @@ export default {
     this.getComments();
   },
   methods: {
-    ...mapActions(['playNewSong']),
+    ...mapActions(['playNewSong', 'toggleAudio']),
     async addComment(values, { resetForm }) {
       this.commentInSubmission = true;
       this.commentShowAlert = true;
