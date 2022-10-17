@@ -44,15 +44,15 @@
             <ErrorMessage class="text-red-600" name="comment" />
             <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block"
               :disabled="commentInSubmission">
-              Submit
+              {{ $t("song.submit") }}
             </button>
           </vee-form>
           <!-- Sort Comments -->
           <select v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded">
-            <option value="latest">Latest</option>
-            <option value="oldest">Oldest</option>
+            <option value="latest">{{ $t("song.latest") }}</option>
+            <option value="oldest">{{ $t("song.oldest") }}</option>
           </select>
         </div>
       </div>

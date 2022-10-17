@@ -17,8 +17,10 @@
       <div class="float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
         <div class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info"
           v-if="currentSong.modified_name" >
-          <span class="song-title">{{ currentSong.modified_name }}</span> by
-          <span class="song-artist">(Uploaded by {{ currentSong.display_name }})</span>
+          <span class="song-title">{{ currentSong.modified_name }}</span>
+          <span class="song-artist">
+            {{ $tc("music_player.upload_by", { user: currentSong.display_name }) }}
+          </span>
         </div>
         <!-- Scrub Container  -->
         <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events  -->

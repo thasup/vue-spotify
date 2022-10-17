@@ -1,8 +1,64 @@
 {
   "home": {
-    "listen": "มาฟังเพลงอันยอดเยี่ยมกัน!"
+    "listen": "มาฟังเพลงอันยอดเยี่ยมกัน!",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et dolor mollis, congue augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.",
+    "songs": "เพลงทั้งหมด"
   },
   "song": {
-    "comment_count": "ไม่มีความคิดเห็น | 1 ความคิดเห็น | {count} ความคิดเห็น"
+    "comment_count": "ไม่มีความคิดเห็น | 1 ความคิดเห็น | {count} ความคิดเห็น",
+    "submit": "ส่งความคิดเห็น",
+    "latest": "ใหม่ล่าสุด",
+    "oldest": "เก่าสุด"
+  },
+  "manage": {
+    "my_songs": "เพลงของฉัน",
+    "upload_file": {
+      "upload": "อัพโหลด",
+      "drop_file": "วางไฟล์ของคุณลงที่นี่",
+      "submit": "ตกลง",
+      "back": "ย้อนกลับ"
+    }
+  },
+  "header": {
+    "about": "เกี่ยวกับฉัน",
+    "login": "ล็อกอิน / สมัครสมาชิก",
+    "manage": "จัดการ",
+    "logout": "ล็อกเอาท์"
+  },
+  "auth": {
+    "your_account": "บัญชีของคุณ",
+    "login": "ล็อกอิน",
+    "register": "สมัครสมาชิก",
+    "login_form": {
+      "email": "อีเมล",
+      "email_placeholder": "กรอกอีเมล",
+      "password": "รหัสผ่าน",
+      "password_placeholder": "กรอกรหัสผ่าน",
+      "submit": "ตกลง"
+    },
+    "register_form": {
+      "name": "ชื่อ",
+      "name_placeholder": "กรอกชื่อ",
+      "email": "อีเมล",
+      "email_placeholder": "กรอกอีเมล",
+      "age": "อายุ",
+      "password": "รหัสผ่าน",
+      "password_placeholder": "กรอกรหัสผ่าน",
+      "confirmed_password": "ยืนยันรหัสผ่าน",
+      "confirmed_password_placeholder": "กรอกเพื่อยืนยันรหัสผ่าน",
+      "country": "ประเทศ",
+      "countries_list": {
+        "usa": "สหรัฐอเมริกา",
+        "mexico": "เม็กซิโก",
+        "germany": "เยอรมนี",
+        "antartica": "แอนตาร์กติกา"
+      },
+      "accept": "ฉันยอมรับ{0}ของเว็บ Music",
+      "tos": "เงื่อนไขและข้อตกลงการใช้บริการ",
+      "submit": "ตกลง"
+    }
+  },
+  "music_player": {
+    "upload_by": " อัพโหลดโดย {user}"
   }
 }

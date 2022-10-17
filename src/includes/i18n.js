@@ -3,7 +3,7 @@ import en from '@/locales/en.json';
 import th from '@/locales/th.json';
 
 export default createI18n({
-  locale: 'th',
+  locale: 'en',
   fallbackLocale: 'en',
   messages: {
     en,

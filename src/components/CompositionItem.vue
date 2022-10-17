@@ -35,11 +35,11 @@
         </div>
         <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600"
           :disabled="isSubmission">
-          Submit
+          {{ $t("manage.upload_file.submit") }}
         </button>
         <button type="button" class="ml-2 py-1.5 px-3 rounded text-white bg-gray-600"
           :disabled="isSubmission" @click.prevent="showForm = false">
-          Go Back
+          {{ $t("manage.upload_file.back") }}
         </button>
       </vee-form>
     </div>

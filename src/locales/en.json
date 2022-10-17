@@ -1,12 +1,64 @@
 {
   "home": {
-    "listen": "Listen to Great Music!"
+    "listen": "Listen to Great Music!",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et dolor mollis, congue augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.",
+    "songs": "Songs"
   },
   "song": {
-    "comment_count": "No comments | 1 comment | {count} comments"
+    "comment_count": "No comments | 1 comment | {count} comments",
+    "submit": "Submit",
+    "latest": "Latest",
+    "oldest": "Oldest"
   },
-  "register": {
-    "accept": "I accept Music's {0}",
-    "tos": "Terms of Service"
+  "manage": {
+    "my_songs": "My Songs",
+    "upload_file": {
+      "upload": "Upload",
+      "drop_file": "Drop your files here",
+      "submit": "Submit",
+      "back": "Go Back"
+    }
+  },
+  "header": {
+    "about": "About",
+    "login": "Login / Register",
+    "manage": "Manage",
+    "logout": "Logout"
+  },
+  "auth": {
+    "your_account": "Your Account",
+    "login": "Login",
+    "register": "Register",
+    "login_form": {
+      "email": "Email",
+      "email_placeholder": "Enter Email",
+      "password": "Password",
+      "password_placeholder": "Enter Password",
+      "submit": "Submit"
+    },
+    "register_form": {
+      "name": "Name",
+      "name_placeholder": "Enter Name",
+      "email": "Email",
+      "email_placeholder": "Enter Email",
+      "age": "Age",
+      "password": "Password",
+      "password_placeholder": "Enter Password",
+      "confirmed_password": "Confirmed Password",
+      "confirmed_password_placeholder": "Enter Confirmed Password",
+      "country": "Country",
+      "countries_list": {
+        "usa": "USA",
+        "mexico": "Mexico",
+        "germany": "Germany",
+        "antartica": "Antartica"
+      },
+      "accept": "I accept Music's {0}",
+      "tos": "Terms of Service",
+      "submit": "Submit"
+    }
+  },
+  "music_player": {
+    "upload_by": " Uploaded by {user}"
   }
 }
