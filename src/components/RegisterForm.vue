@@ -13,31 +13,31 @@
   >
     <!-- Name -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Name</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.name") }}</label>
       <vee-field
         type="text"
         name="name"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
         transition duration-500 focus:outline-none focus:border-black rounded"
-        placeholder="Enter Name"
+        :placeholder="$t('auth.register_form.name_placeholder')"
       />
       <ErrorMessage class="text-red-600" name="name" />
     </div>
     <!-- Email -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Email</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.email") }}</label>
       <vee-field
         type="email"
         name="email"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
         transition duration-500 focus:outline-none focus:border-black rounded"
-        placeholder="Enter Email"
+        :placeholder="$t('auth.register_form.email_placeholder')"
       />
       <ErrorMessage class="text-red-600" name="email" />
     </div>
     <!-- Age -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Age</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.age") }}</label>
       <vee-field
         type="number"
         name="age"
@@ -48,12 +48,12 @@
     </div>
     <!-- Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Password</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.password") }}</label>
       <vee-field name="password" :bails="false" v-slot="{ field, errors }">
         <input
           class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
           transition duration-500 focus:outline-none focus:border-black rounded"
-          placeholder="Password"
+          :placeholder="$t('auth.register_form.password_placeholder')"
           type="password"
           v-bind="field"
         />
@@ -65,29 +65,29 @@
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Confirm Password</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.confirmed_password") }}</label>
       <vee-field
         type="password"
         name="confirm_password"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
         transition duration-500 focus:outline-none focus:border-black rounded"
-        placeholder="Confirm Password"
+        :placeholder="$t('auth.register_form.confirmed_password_placeholder')"
       />
       <ErrorMessage class="text-red-600" name="confirm_password" />
     </div>
     <!-- Country -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Country</label>
+      <label class="inline-block mb-2">{{ $t("auth.register_form.country") }}</label>
       <vee-field
         as="select"
         name="country"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
         transition duration-500 focus:outline-none focus:border-black rounded"
       >
-        <option value="USA">USA</option>
-        <option value="Mexico">Mexico</option>
-        <option value="Germany">Germany</option>
-        <option value="Antartica">Antartica</option>
+        <option value="USA">{{ $t("auth.register_form.countries_list.usa") }}</option>
+        <option value="Mexico">{{ $t("auth.register_form.countries_list.mexico") }}</option>
+        <option value="Germany">{{ $t("auth.register_form.countries_list.germany") }}</option>
+        <option value="Antartica">{{ $t("auth.register_form.countries_list.antartica") }}</option>
       </vee-field>
       <ErrorMessage class="text-red-600" name="country" />
     </div>
@@ -95,7 +95,13 @@
     <div class="mb-3 pl-6">
       <vee-field type="checkbox" name="tos" value="1"
         class="w-4 h-4 float-left -ml-6 mt-1 rounded inline-block" />
-      <label class="inline-block">Accept terms of service</label>
+      <i18n-t
+        class="inline-block"
+        keypath="auth.register_form.accept"
+        tag="label"
+      >
+        <a href="#">{{ $t("auth.register_form.tos") }}</a>
+      </i18n-t>
       <ErrorMessage class="text-red-600 block" name="tos" />
     </div>
     <button
@@ -104,7 +110,7 @@
       class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded
       transition hover:bg-purple-700"
     >
-      Submit
+    {{ $t("auth.register_form.submit") }}
     </button>
   </vee-form>
 </template>
